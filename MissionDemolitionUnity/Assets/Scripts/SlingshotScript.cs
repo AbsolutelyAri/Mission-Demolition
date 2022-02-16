@@ -15,12 +15,26 @@ using UnityEngine;
 public class SlingshotScript : MonoBehaviour
 {
 
+    static private SlingshotScript S;
+
     [Header("Set dynamically")]
     public GameObject launchPoint; //point where projectile launches from
     public Vector3 LaunchPos;
     public GameObject projectile; //instance of the projectile prefab
     public bool aimingMode; //is the player actively aiming?
     public Rigidbody projRB; //rigidbody of the projectile
+
+    static public Vector3 LAUNCH_POS
+    {
+        get
+        {
+            if(S == null)
+            {
+                return Vector3.zero;
+            }
+            return S.LaunchPos;
+        }
+    }
 
     [Header("Set in inspector")]
     public GameObject prefabProjectile; //projectile that will be fired
@@ -29,6 +43,8 @@ public class SlingshotScript : MonoBehaviour
 
     private void Awake()
     {
+        S = this; //set singleton to this object
+
         //Find the LaunchPoint
         Transform LaunchPointTrans = transform.Find("LaunchPoint"); //holy crap the launch point is trans, this game has more LGBT+ characters than Disney
         launchPoint = LaunchPointTrans.gameObject;
@@ -80,14 +96,14 @@ public class SlingshotScript : MonoBehaviour
     // detect when mouse enters slingshot area, toggle launchPoint
     private void OnMouseEnter()
     {
-        print("OnMouseEnter triggered");
+        //print("OnMouseEnter triggered");
         launchPoint.SetActive(true);
     }
 
     // detect when mouse leaves the slingshot area
     private void OnMouseExit()
     {
-        print("OnMouseExit triggered");
+        //print("OnMouseExit triggered");
         launchPoint.SetActive(false);
     }
 

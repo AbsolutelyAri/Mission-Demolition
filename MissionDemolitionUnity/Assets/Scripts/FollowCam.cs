@@ -2,8 +2,8 @@
  * Created by: Ben Krieger
  * Created on: 2/9/2022 cuz we're speedrunners B)
  * 
- * Last edited by: 2/14/2022
- * Last edited on:
+ * Last edited by: Krieger again
+ * Last edited on: 2/16/2022
  * 
  * Description: make the camera follow the projectile that was fired
  * 
@@ -37,10 +37,26 @@ public class FollowCam : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (PoI == null) return; //if we have no point of interest then don't bother
+        //if (PoI == null) return; //if we have no point of interest then don't bother
 
-        Vector3 destination = PoI.transform.position;
+        //Vector3 destination = PoI.transform.position;
 
+        Vector3 destination; //position of our POI
+        if (PoI == null)
+        {
+            destination = Vector3.zero;
+        }
+        else
+        {
+            destination = PoI.transform.position;
+            if (PoI.tag == "Projectile")
+            {
+                if (PoI.GetComponent<Rigidbody>().IsSleeping()) //check if the projectile we're following has stopped moving
+                {
+                    PoI = null;
+                }
+            }
+        }
         destination.x = Mathf.Max(minXAndY.x, destination.x);
         destination.y = Mathf.Max(minXAndY.y, destination.y); //if the x or y are lower than the minimum then set destination to the minimum
 
