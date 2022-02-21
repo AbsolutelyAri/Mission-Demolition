@@ -90,6 +90,8 @@ public class SlingshotScript : MonoBehaviour
             projRB.velocity = -mouseDelta * velocityMultiplier;
             FollowCam.PoI = projectile; //set the camera point of interest to the projectile
             projectile = null; //empty the reference 
+            MissionDemolition.ShotFired();
+            ProjectileLine.S.PoI = projectile;
         }
     }
 
