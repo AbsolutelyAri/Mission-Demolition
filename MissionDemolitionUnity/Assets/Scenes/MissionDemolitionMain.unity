@@ -368,6 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistance: 0.1
+  lineWidth: {x: 0.02, y: 0.5}
 --- !u!120 &178690288
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -419,7 +420,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.2368412
+        value: 0.12499428
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1116,7 +1117,7 @@ MonoBehaviour:
   castlePos: {x: 50, y: -9.5, z: 0}
   castles:
   - {fileID: 4235669690218301541, guid: b1958ba705e78ab4989be5233911edac, type: 3}
-  - {fileID: 4235669690218301541, guid: b1958ba705e78ab4989be5233911edac, type: 3}
+  - {fileID: 4235669690218301541, guid: df5fe9f15a0acf54ab49780ec735549d, type: 3}
   level: 0
   levelMax: 0
   shotsTaken: 0

@@ -19,6 +19,7 @@ public class ProjectileLine : MonoBehaviour
 
     [Header("Set in inspector")]
     public float minDistance = 0.1f;
+    public Vector2 lineWidth = new Vector2(0.0f, 0.5f);
 
     private LineRenderer line;
     private GameObject linePoI;
@@ -29,6 +30,7 @@ public class ProjectileLine : MonoBehaviour
         S = this;
         line = GetComponent<LineRenderer>();
         line.enabled = false;
+        line.SetWidth(lineWidth.x, lineWidth.y);
         points = new List<Vector3>();
     }
 
